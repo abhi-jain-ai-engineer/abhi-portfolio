@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Midnight-blue / charcoal base */
+  --bg: #0a0d16;
+  --bg-deep: #050609;
+  --text: #f1ece0;
+  --text-dim: rgba(241, 236, 224, 0.58);
+
+  /* Arcane accent palette: antique gold, emerald, deep purple, magical blue */
+  --gold: #c9a227;
+  --gold-bright: #eccb6c;
+  --emerald: #2f7a56;
+  --emerald-bright: #4fb87f;
+  --purple: #6b4fa0;
+  --purple-bright: #9c7bd6;
+  --arcane: #4f7bd1;
+  --arcane-bright: #7fa4e8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-emerald: var(--emerald);
+  --color-emerald-bright: var(--emerald-bright);
+  --color-purple: var(--purple);
+  --color-purple-bright: var(--purple-bright);
+  --color-arcane: var(--arcane);
+  --color-arcane-bright: var(--arcane-bright);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* Melts a rectangular image/video into the page background. */
+.img-blend {
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%);
+}
+
+/* Shared "kicker" label above a section heading. */
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }
